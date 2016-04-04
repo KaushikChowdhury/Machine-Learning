@@ -18,6 +18,7 @@ table(bn[-sub.idx,"class"], pred, dnn = c("Actual", "Predicted"))
 
 probs <- predict(mod, bn[-sub.idx,], type = "prob")
 
+library(ROCR)
 pred <- prediction(probs[,2], bn[-sub.idx,"class"])
 perf <- performance(pred, "tpr", "fpr")
 plot(perf)
